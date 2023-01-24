@@ -1,5 +1,12 @@
 # Local backups
 backup/
+script/
+references/
+test_images/
+yolov5/
+yolov8/
+deployment/ConvNeXt/
+dataset/
 
 # IDE settings
 .idea/
@@ -9,8 +16,14 @@ backup/
 docs/
 *.docx
 *.zip
-*.zip
+*.pdf
+*.ttf
 
+# Models
+*.pt
+*.trt
+*.onnx
+*.engine
 
 # Python
 # ------------------------------------------------------ 
