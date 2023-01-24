@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 7
+names: ['car', 'cleaner', 'flight attendant', 'people', 'traffic police', 'trash_can', 'waitor']
+
+roboflow:
+  workspace: 199050418-hziee-edu-cn
+  project: cleaner-n64ho
+  version: 16
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/199050418-hziee-edu-cn/cleaner-n64ho/dataset/16
