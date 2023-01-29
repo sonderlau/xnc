@@ -19,11 +19,20 @@ docs/
 *.pdf
 *.ttf
 
+# Sample Pictures
+comparison/origin/
+comparison/out/
+comparison/output/
+
+debris_detection/pics/
+debris_detection/output/
+
 # Models
 *.pt
 *.trt
 *.onnx
 *.engine
+!v19-1280-best_so_far.pt
 
 # Python
 # ------------------------------------------------------ 
