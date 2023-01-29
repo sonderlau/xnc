@@ -1,3 +1,5 @@
+# 数据集文件定义
+path: /xnc/
 train: ../train/images
 val: ../valid/images
 test: ../test/images
