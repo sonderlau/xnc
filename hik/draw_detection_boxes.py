@@ -7,7 +7,7 @@ from io import BytesIO
 
 URL = "http://116.233.79.75:8521/detect"
 
-IMAGE_URL = "https://ncrj.sdsea.top:4433/jc_ncrjhj/profile/upload/camera_images/12687c45-21b1-4a0f-a851-1a01a86b6c28.jpg"
+IMAGE_URL = """https://ncrj.sdsea.top:4433/jc_ncrjhj/profile/upload/camera_images/dd5c9538-9eed-490b-9b20-f065deebbeff.jpg"""
 
 # 不同物体的框颜色
 colors = {
@@ -19,7 +19,7 @@ colors = {
     "car": (253, 112, 19),
 }
 
-payload = {"path": IMAGE_URL}
+payload = {"path": IMAGE_URL, "location": "247DMSH"}
 
 FONT_SIZE = 700
 
