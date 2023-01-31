@@ -25,7 +25,10 @@ comparison/out/
 comparison/output/
 
 debris_detection/pics/
-debris_detection/output/
+debris_detection/gray_output/
+
+debris_detection/bi_output/
+debris_detection/coutours/
 
 # Models
 *.pt
