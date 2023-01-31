@@ -7,10 +7,12 @@ gray_out/              生成的灰度图
 """
 
 import os
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFilter
 import numpy as np
 from PIL import Image
 import json
+import cv2
+
 
 def gray(test, origin):
     # 转换为数组
@@ -29,7 +31,9 @@ def gray(test, origin):
     # 取整 转 8bit
     sum = np.around(sum).astype(np.uint8)
 
-    return Image.fromarray(sum, "L")
+    return sum
+
+
 # * 裁剪多边形区域
 def polygon_crop(img_binary, xys):
     """裁剪出图片中的一块多边形
@@ -42,17 +46,37 @@ def polygon_crop(img_binary, xys):
         Pillow Image: 裁剪后的图片
     """
 
+    # * 找到最大可包括的矩形
+    x_min = x_max = xys[0][0]
+    y_max = y_min = xys[0][1]
+
+    for xy in xys:
+        if xy[0] > x_max:
+            x_max = xy[0]
+
+        if xy[0] < x_min:
+            x_min = xy[0]
+
+        if xy[1] > y_max:
+            y_max = xy[1]
+
+        if xy[1] < y_min:
+            y_min = xy[1]
+
     # 遮罩层
     maskimg_binary = Image.new("RGB", img_binary.size, (0, 0, 0))
-    
+
     # 多边形内 1
     #      外 0
-    ImageDraw.Draw(maskimg_binary).polygon(xys, fill=(1,1,1), outline=1)
+    ImageDraw.Draw(maskimg_binary).polygon(xys, fill=(1, 1, 1), outline=1)
     mask = np.array(maskimg_binary)
-    
+
     filtered = np.array(img_binary) * mask
-    
-    return Image.fromarray(filtered, "RGB")
+
+    img = Image.fromarray(filtered, "RGB")
+
+    return img.crop((x_min, y_min, x_max, y_max))
+
 
 # 遍历所有图片
 edge = ""
@@ -68,11 +92,23 @@ for file in filenames:
     img = Image.open(f"./pics/{file}").convert("RGB")
 
     # 多边形遮罩
-    xys = tuple(tuple(i) for i in edge[baseline_name]["edge"]) 
-    
+    xys = tuple(tuple(i) for i in edge[baseline_name]["edge"])
+
     baseline = polygon_crop(baseline, xys)
     img = polygon_crop(img, xys)
 
     result = gray(img, baseline)
-
-    result.save(f"./output/{file}", mode="L")
+    gray_image = Image.fromarray(result, "L")
+    gray_image.save(f"./gray_output/{file}", mode="L")
+    
+    
+    bi_img = cv2.adaptiveThreshold(
+        result,
+        255,
+        cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+        cv2.THRESH_BINARY,
+        blockSize=7,
+        C=0,
+    )
+    cv2.imwrite(f"./bi_output/{file}", bi_img)
+    
