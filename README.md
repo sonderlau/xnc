@@ -55,3 +55,7 @@ python -m torch.distributed.run --nproc_per_node 2 train.py --batch 60 --data cl
 | 1280       | 60    | 3    |                  |
 | 640        | 64    | 2    |                  |
 
+```bash
+python train.py --epochs 10 --data cleaner.yaml --weights v22-1280-midterm.pt --cache  --evolve 400
+```
+
