@@ -83,7 +83,7 @@ MixUp augmentation https://arxiv.org/pdf/1710.09412.pdf
 
 
 
-#### 自定义的功能：
+#### 自行实现的功能：
 
 Blur
 
@@ -159,7 +159,7 @@ TensorRT 的预期推理速度
 
 
 
-### Hyperparameter Optimization
+### Hyperparameter Optimization 超参优化
 
 
 
@@ -169,7 +169,7 @@ TensorRT 的预期推理速度
 
 #### TPESampler
 
-#### HyperbandPruner
+#### HyperbandPruner  rqdf
 
 
 
@@ -245,10 +245,6 @@ Sony IMX219
 #### 蜂鸣器
 
 5V 无震源
-
-
-
-
 
 
 
