@@ -7,7 +7,7 @@ from io import BytesIO
 
 URL = "http://116.233.79.75:8521/detect"
 
-IMAGE_URL = """https://ncrj.sdsea.top:4433/jc_ncrjhj/profile/upload/camera_images/dd5c9538-9eed-490b-9b20-f065deebbeff.jpg"""
+IMAGE_URL = """https://ncrj.sdsea.top/resource/image/camera_images/613a3593-e9bd-44b7-8502-f0288e619cf3.jpg"""
 
 # 不同物体的框颜色
 colors = {
